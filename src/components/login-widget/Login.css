@@ -1,0 +1,63 @@
+p, span, input , label,body {
+    color: white;
+}
+
+.h-100{
+    height:100%;
+}
+.w-100{
+    width: 100%;
+}
+.flex{
+    display: flex;
+}
+.center{
+    align-items:center;
+    justify-content: center;
+}
+
+.Login{
+    height: 100vh;
+    background: linear-gradient(#b3d5d4,#3b5561);
+}
+
+.input-group input {
+    background-color: #3F5359;
+}
+.iconInput{
+    color: white !important;
+    background: #3F5359 !important;
+}
+.form-control {
+    color: white !important;
+    font-size: 14px;
+    height: 50px;
+}
+.form-control:focus{
+    background-color: #3F5359 !important;
+    border-color: none !important;
+    outline: none !important;
+    box-shadow: 0 0 0 0 !important;
+}
+.forgotLogin a {
+    color: white;
+}
+.form-control::-webkit-input-placeholder { color: white !important; font-size:14px; }   /* WebKit, Blink, Edge */
+.form-control:-moz-placeholder { color: white !important;font-size:14px; }  /* Mozilla Firefox 4 to 18 */
+.form-control::-moz-placeholder { color: white !important;font-size:14px; }  /* Mozilla Firefox 19+ */
+.form-control:-ms-input-placeholder { color: white !important;font-size:14px; }  /* Internet Explorer 10-11 */
+.form-control::-ms-input-placeholder { color: white !important;font-size:14px; }  /* Microsoft Edge */
+
+a:hover {
+    color: white !important;
+    text-decoration: underline;
+}
+.submitBtn Button{
+    background-color: #7E9B9F;
+    outline: 0 !important;
+    border-color: transparent;
+}
+.form-control-lg {
+    height: 45px !important;
+    line-height: 150px !important;
+}
