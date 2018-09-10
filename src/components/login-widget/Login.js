@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import './Login.css'
 import * as logo from '../../assets/logo-big.png'
-import { Container, Row, Col, Button } from 'reactstrap';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faUser, faLock } from '@fortawesome/free-solid-svg-icons'
 class Login extends Component {
   constructor(props) {
     super();
     this.state = {
-      username: '',
+      email: '',
       password: '',
+      emailInvalid:'',
       error: ''
     }
     this.handlePassChange = this.handlePassChange.bind(this);
-    this.handleUserChange = this.handleUserChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.dismissError = this.dismissError.bind(this);
+    this.validateEmail = this.validateEmail.bind(this);
   }
 
   dismissError() {
@@ -25,8 +26,17 @@ class Login extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
 
-    if (!this.state.username) {
-      return this.setState({ error: 'Username is required' });
+    if (!this.state.email) {
+      this.setState({ error: 'Email is required' });
+
+      if(!this.validateEmail()) {
+         this.setState({emailInvalid: 'Invalid email'})
+      }
+      return;
+    }
+
+    if(!this.validateEmail()) {
+      return this.setState({emailInvalid: 'Invalid email'})
     }
 
     if (!this.state.password) {
@@ -36,11 +46,21 @@ class Login extends Component {
     return this.setState({ error: '' });
   }
 
-  handleUserChange(evt) {
+  handleEmailChange(evt) {
     this.setState({
-      username: evt.target.value,
+      email: evt.target.value,
     });
   };
+   validateEmail() {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    console.log(re.test(this.state.email));
+    if( !re.test(this.state.email)) {
+      this.setState({emailInvalid: true})
+    } else {
+      this.setState({emailInvalid: false})
+    }
+    return re.test(this.state.email);
+  }
 
   handlePassChange(evt) {
     this.setState({
@@ -58,26 +78,32 @@ class Login extends Component {
               </div>
               <form onSubmit={this.handleSubmit}>
                 {
-                  this.state.error &&
-                  <h3 data-test="error" onClick={this.dismissError}>
-                    <button onClick={this.dismissError}>✖</button>
-                    {this.state.error}
-                  </h3>
+                  // this.state.error &&
+                  // <h3 data-test="error" onClick={this.dismissError}>
+                  //   <button onClick={this.dismissError}>✖</button>
+                  //   {this.state.error}
+                  // </h3>
                 }
-                <div className="input-group mb-2">
-                  <input className="form-control form-control-lg py-2 border-right-0 border" data-test="username" value={this.state.username} type="search" placeholder="Email" id="example-search-input" onChange={this.handleUserChange} />
+                <div className={"input-group mt-2 "}>
+                  <input 
+                    className={"form-control form-control-lg py-2 border-right-0 " + (this.state.emailInvalid ? 'is-invalid' : '')}
+                   data-test="email" value={this.state.email} type="search" placeholder="Email" id="example-search-input" onChange={this.handleEmailChange} />
+                   
                   <span className="input-group-append">
-                    <div className="iconInput input-group-text">
-                      {/* <FontAwesomeIcon icon={faUser} /> */}
+                    <div className={"iconInput input-group-text " + (this.state.emailInvalid ? 'is-invalid text-red' : '')}>
                       <i className="fa fa-user"></i>
                     </div>
                   </span>
+                  <div className="invalid-feedback">
+          Please enter a vliad email address.
+        </div>
                 </div>
-                <div className="input-group mb-2">
-                  <input className="form-control form-control-lg py-2 border-right-0 border" data-test="password" value={this.state.password} type="search" placeholder="Password" id="example-search-input" onChange={this.handlePassChange} />
+
+                
+                <div className="input-group mt-2">
+                  <input className="form-control form-control-lg py-2 border-right-0 " data-test="password" value={this.state.password} type="search" placeholder="Password" id="example-search-input" onChange={this.handlePassChange} />
                   <span className="input-group-append">
                     <div className="iconInput input-group-text">
-                      {/* <FontAwesomeIcon icon={faLock} /> */}
                       <i className="fa fa-lock"></i>
                     </div>
                   </span>
@@ -86,7 +112,7 @@ class Login extends Component {
                   <a href="#"><span>Forgot password?</span></a>
                 </div>
                 <div className="submitBtn mb-4">
-                  <Button size="lg" color="primary" block>LOGIN</Button>{}
+                  <button className="btn btn-primary btn-lg btn-block">LOGIN</button>
                 </div>
                 <div className="keepLogged text-center mb-4">
                   <label>
@@ -98,9 +124,7 @@ class Login extends Component {
           </div>
         </div>
       </div >
-
     );
   }
 }
-
 export default Login;
