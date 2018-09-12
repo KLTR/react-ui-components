@@ -1,0 +1,28 @@
+.Weather{
+    width: 300px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-family: 'Montserrat', sans-serif;
+    /* This Class Css */
+    /* Should be Removed when uploading to production */
+
+}
+
+.weatherBar {
+    color: white;
+    background-color: #3d4f55;
+    padding: 20px 15px;
+    border-radius: 10px;
+    text-align: left;
+}
+.weather{
+    font-weight: 500;
+    color: gold;
+}
+.weatherText .date {
+    font-size: 13px;
+}
+.weatherText .day {
+    font-weight: 500;
+}

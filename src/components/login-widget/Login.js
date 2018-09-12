@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './Login.css'
 import * as logo from '../../assets/logo-big.png'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faUser, faLock } from '@fortawesome/free-solid-svg-icons'
 class Login extends Component {
   constructor(props) {
     super();
@@ -53,7 +51,6 @@ class Login extends Component {
   };
    validateEmail() {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    console.log(re.test(this.state.email));
     if( !re.test(this.state.email)) {
       this.setState({emailInvalid: true})
     } else {
@@ -78,11 +75,6 @@ class Login extends Component {
               </div>
               <form onSubmit={this.handleSubmit}>
                 {
-                  // this.state.error &&
-                  // <h3 data-test="error" onClick={this.dismissError}>
-                  //   <button onClick={this.dismissError}>✖</button>
-                  //   {this.state.error}
-                  // </h3>
                 }
                 <div className={"input-group mt-2 "}>
                   <input 
@@ -98,8 +90,6 @@ class Login extends Component {
           Please enter a vliad email address.
         </div>
                 </div>
-
-                
                 <div className="input-group mt-2">
                   <input className="form-control form-control-lg py-2 border-right-0 " data-test="password" value={this.state.password} type="search" placeholder="Password" id="example-search-input" onChange={this.handlePassChange} />
                   <span className="input-group-append">
