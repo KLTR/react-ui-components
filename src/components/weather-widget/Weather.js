@@ -30,6 +30,9 @@ class Weather extends Component {
       this.state.temp = (this.state.temp - 32) / 1.8
       return;
     } else {
+      if(this.state.tempScale === 'f'){
+        return
+      }
         this.setState({tempScale: 'f'})
         this.state.temp = (this.state.temp * 1.8) + 32
         return
