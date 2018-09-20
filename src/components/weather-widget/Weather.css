@@ -20,9 +20,41 @@
     font-weight: 500;
     color: gold;
 }
-.weatherText .date {
+.date {
     font-size: 13px;
 }
-.weatherText .day {
+.day {
     font-weight: 500;
+}
+.tempBtns{
+    display: flex;
+   
+}
+.tempBtn{
+    background: #3d4f55;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border-radius: 6px;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tempBtn:hover{
+    cursor: pointer;
+}
+.tempBtns span{
+    margin: 5px;
+    color: white;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+.selected{
+    background: white;
+
+}
+.selected span {
+    color: #3D4F55;
 }
